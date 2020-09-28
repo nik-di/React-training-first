@@ -8,37 +8,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.message {
-  width: 500px;
-  border-top: 1px solid lightseagreen;
-  border-bottom: 1px solid lightseagreen;
-  display: block;
-  padding: 20px 7px;
-}
-
-.message-header {
-  display: flex;
-}
-
-.message-header-text__block {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.message-header-image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-
-.message-header-title {
-  font-size: 12px;
-}
-
-.message-header-date {
-  font-size: 12px;
-  color: lightseagreen;
-  opacity: 0.5;
-}

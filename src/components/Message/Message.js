@@ -8,7 +8,21 @@ class Message extends React.Component {
       isLiked: false,
       counter: 0
     };
+
+    this.clickHandler = this.clickHandler.bind(this);
   }
+
+  clickHandler() {
+    const { isLiked } = this.state;
+
+    if (isLiked) {
+      this.setState({ counter: 0 });
+    } else {
+      this.setState({ counter: 1 });
+    }
+    this.setState({ isLiked: !isLiked });
+  }
+
   render() {
     const { logo, name, title, text } = this.props;
     const { counter, isLiked } = this.state;
@@ -28,14 +42,7 @@ class Message extends React.Component {
           <div className="like">
             <button
               className={likeBtnClassName}
-              onClick={() => {
-                if (isLiked) {
-                  this.setState({ counter: 0 });
-                } else {
-                  this.setState({ counter: 1 });
-                }
-                this.setState({ isLiked: !isLiked });
-              }}
+              onClick={this.clickHandler}
             >♥</button>
             <span className="like__counter">{counter}</span>
           </div>

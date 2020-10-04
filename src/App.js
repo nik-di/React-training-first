@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './App.css';
+import logo from './logo.svg';
+import Message from './components/Message/Message';
+import Navigation from './components/Navigation/Navigation';
 
 function App() {
-  const date = new Date();
-  const displayDate = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
+  const messageData = [
+    { id: 'id1', name: "Вася", logo, title: "Hello, i am Вася!", text: "React is awesome lib" },
+    { id: 'id2', name: "Петя", logo, title: "Hello, i am Петя!", text: "React is lib" },
+    { id: 'id3', name: "Настя", logo, title: "Hello, i am Настя!", text: "World is awesome" },
+    { id: 'id4', name: "Дима", logo, title: "Hello, i am Дима!", text: "Hey, i am learn React" },
+  ];
+
   return (
-    <div className="App">
-      <div className="message">
-        <div className="message-header">
-          <img src={logo} alt="Alt text" />
-          <div className="message-header-text__block">
-            <p className="message-header-title">Ivan</p>
-            <span className="message-header-date">{displayDate}</span>
+    <Router>
+      <Switch>
+        <Route path='/' exact>
+          <Navigation />
+          <div className="App">
+            {
+              messageData.map(({ name, logo, text, title, id }) => {
+                return (
+                  <Message
+                    name={name}
+                    logo={logo}
+                    text={text}
+                    title={title}
+                    key={id}
+                  />
+                )
+              })
+            }
           </div>
-        </div>
-        <div className="message-body">
-          <h2 className="message-title">Hi this is title!</h2>
-          <p className="message-text">Lorem ipsum semi-long text ....</p>
-        </div>
-      </div>
-    </div>
+        </Route>
+        <Route path='/hello'>
+          <Navigation />
+          <h1>Hello!</h1>
+        </Route>
+        <Route path='/page'>
+          <Navigation />
+          <h1>Page!</h1>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

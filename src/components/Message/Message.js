@@ -34,7 +34,7 @@ class Message extends React.Component {
     return (
       <div className="message">
         <div className="message-header">
-          <img src={logo} alt="Alt text" />
+          <img className="message-header-image" src={logo} alt="Alt text" />
           <div className="message-header-text__block">
             <p className="message-header-title">{name}</p>
             <span className="message-header-date">{displayDate}</span>
